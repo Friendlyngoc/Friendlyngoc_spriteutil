@@ -33,10 +33,10 @@ The masks of these sprites are respectively:
 
 ## Usage Information
 ### Prerequisites
-- `Python 3.7` is required. <br/>
+- `Python 3.6` is required. <br/>
 - `pip` is requied, to install `sudo apt install pip`
 ### Usage
-- `pip install Friendlyngoc==1.0.5` from your terminal
+- `pip install Friendlyngoc` from your terminal
 
 - Example of functioning: <br/>
 ```python
@@ -44,7 +44,7 @@ The masks of these sprites are respectively:
 >>> sprite_sheet = SpriteSheet('1.png')
 >>> sprites, labels = sprite_sheet.find_sprites()
 >>> len(sprites)
-39
+3
 >>> # Create the mask image with bounding boxes.
 >>> image = sprite_sheet.create_sprite_labels_image()
 >>> image.save('2.png')

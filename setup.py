@@ -9,7 +9,7 @@ with open(path.join(here, "README.md"), encoding="utf-8") as f:
 
 __author__ = "Dang Duc Ngoc"
 __email__ = "ngoc.dang@f4.intek.edu.vn"
-__version__ = "1.0.5"
+__version__ = "1.0.6"
 __copyright__ = "Copyright (C) 2019, Intek Institute"
 __credits__ = "Daniel CAUNE"
 __license__ = "MIT"
