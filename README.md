@@ -19,13 +19,15 @@ For example:
 
 ## Sprite Mask
 
-The mask of a sprite defines the 2D shape of the sprite. For example, the sprite sheet [`metal_slug_sprite_standing_stance.png`](metal_slug_sprite_standing_stance_large.png) contains the 3 following sprites:
+The mask of a sprite defines the 2D shape of the sprite. For example, the sprite sheet 
+contains 3 following sprites:
 
-![Metal Slug Standing Stance](metal_slug_sprite_standing_stance_large.png)
+
+![Metal Slug Standing Stance](1.png)
 
 The masks of these sprites are respectively:
 
-![](metal_slug_sprite_detection_coloring.png)
+![](2.png)
 
 ## Aim of the project
 - Detect sprites packed in an image (sheet) and draw their masks and bounding boxes into a new image with the same size of the original image. <br/>
@@ -37,18 +39,24 @@ The masks of these sprites are respectively:
 - `pip` is requied, to install `sudo apt install pip`
 ### Usage
 - `pip install Friendlyngoc` from your terminal
+- Example of functioning:
 
-- Example of functioning: <br/>
-```python
->>> from Friendlyngoc_spriteutil.spriteutil import SpriteSheet
->>> sprite_sheet = SpriteSheet('1.png')
->>> sprites, labels = sprite_sheet.find_sprites()
->>> len(sprites)
-3
->>> # Create the mask image with bounding boxes.
->>> image = sprite_sheet.create_sprite_labels_image()
->>> image.save('2.png')
-```
+    - Input as a spritesheet
+    !['3.png'](spritesheet.png)
+
+    - A image with sprite masks
+    !['spritesheet.png'](4.png)
+
+    ```python
+    >>> from Friendlyngoc_spriteutil.spriteutil import SpriteSheet
+    >>> sprite_sheet = SpriteSheet('spritesheet.png')
+    >>> sprites, labels = sprite_sheet.find_sprites()
+    >>> len(sprites)
+    22
+    >>> # Create the mask image with bounding boxes.
+    >>> image = sprite_sheet.create_sprite_labels_image()
+    >>> image.save('sprites_masks.png')
+    ```
 
 ## Contact Information
 - Email: `Email: ngoc.dang@f4.intek.edu.vn` <br/>

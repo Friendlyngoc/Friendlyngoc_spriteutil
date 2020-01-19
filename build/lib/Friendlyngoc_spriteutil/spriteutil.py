@@ -16,6 +16,7 @@ RGB_MODE = 'RGB'
 RGBA_MODE = 'RGBA'
 P_MODE = "P"
 L_MODE = "L"
+LIST_OF_SUPPORTED_MODE = ['RGB','RGBA','L']
 
 
 # Way_point2:
@@ -92,9 +93,13 @@ class Sprite:
 
 class SpriteSheet():
     def __init__(self, fd, background_color=None):
-
+        if fd.mode not in LIST_OF_SUPPORTED_MODE:
+            raise ValueError(
+                f"The image mode {fd.mode} is not supported")
+    
         if isinstance(fd, Image.Image):
             self.__fd = fd
+        
         else:
             try:
                 self.__fd = Image.open(fd)
@@ -103,7 +108,8 @@ class SpriteSheet():
                     "input must be a path, file or Image object")
 
         if background_color is None:
-            self.__background_color = SpriteSheet.find_most_common_color(self.__fd)
+            self.__background_color =\
+                SpriteSheet.find_most_common_color(self.__fd)
 
         if background_color:
             fd_mode = self.__fd.mode
@@ -111,18 +117,23 @@ class SpriteSheet():
             
             if fd_mode is RGB_MODE:
                 if not isinstance(background_color, tuple):
-                    raise TypeError("The background color must be a tuple")
+                    raise TypeError(
+                        "The background color must be a tuple")
                 if len_background_color != 3:
-                    raise ValueError("RGB tuple must only have 3 intergers")
+                    raise ValueError(
+                        "RGB tuple must only have 3 intergers")
                 if not all([i in range(256) for i in background_color]):
-                    raise ValueError("All integer must range from 0 to 255")
+                    raise ValueError(
+                        "All integer must range from 0 to 255")
                 self.__background_color = background_color                
             
             elif fd_mode is RGBA_MODE:
                 if not isinstance(background_color, tuple):
-                    raise TypeError("The background color must be a tuple")                
+                    raise TypeError(
+                        "The background color must be a tuple")                
                 if len_background_color not in range(3,5):
-                    raise ValueError("RGB tuple must only have 4 intergers")
+                    raise ValueError(
+                        "RGB tuple must only have 4 intergers")
                 if len_background_color == 3: 
                     self.__background_color = (
                         background_color[0],
@@ -142,13 +153,6 @@ class SpriteSheet():
                         "This mode color is single integer")
                 self.__background_color = background_color  
 
-            elif fd_mode is P_MODE:
-                if not isinstance(background_color, int)\
-                    and background_color not in range(257):
-                    raise ValueError(
-                        "This mode color is single integer")
-                self.__background_color = background_color  
-    
     @staticmethod
     def find_most_common_color(image):
         """
@@ -241,12 +245,15 @@ class SpriteSheet():
                 if pixel_colour == self.__background_color:
                     if count_id == 0:
                         # Use a list hold that label to reuse in increasing stage
-                        sprite_layers.append(label_background)
+                        sprite_layers.append(
+                                label_background)
                         # Only holds the background label(0) only 1 time
-                        label_id.append(label_background)
+                        label_id.append(
+                                label_background)
                         count_id += 1
                     else:
-                        sprite_layers.append(label_background)
+                        sprite_layers.append(
+                                label_background)
 
                 # if current pixel is forgeground
                 elif pixel_colour != self.__background_color:
@@ -571,7 +578,9 @@ class SpriteSheet():
             # create keys include label and top left, bottom right
             # coordinate as keys and cooresponding colors
             dict_of_colors[i] = outline_color
-            dict_of_colors[sprites[i].top_left, sprites[i].bottom_right] = outline_color
+            dict_of_colors[sprites[i].top_left,
+                           sprites[i].bottom_right]\
+                               = outline_color
 
         # Go through the label map to color the sprites
         for y in range(len(label_map)):
@@ -597,7 +606,6 @@ class SpriteSheet():
                 outline=dict_of_colors[top_left, bottom_right])
         new_image.show()
         return new_image
-
 
 
 def main():

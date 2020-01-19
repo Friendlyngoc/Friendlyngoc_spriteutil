@@ -9,12 +9,12 @@ with open(path.join(here, "README.md"), encoding="utf-8") as f:
 
 __author__ = "Dang Duc Ngoc"
 __email__ = "ngoc.dang@f4.intek.edu.vn"
-__version__ = "1.0.6"
+__version__ = "1.0.9"
 __copyright__ = "Copyright (C) 2019, Intek Institute"
 __credits__ = "Daniel CAUNE"
 __license__ = "MIT"
 __maintainer__ = "Dang Duc Ngoc"
-__url__ = "https://github.com/intek-training-jsc/sprite-sheet-Friendlyngoc"
+__url__ = "https://github.com/Friendlyngoc/Friendlyngoc_spriteutil"
 __description__ = "A Sprite dectection tool"
 
 
@@ -72,7 +72,7 @@ setup(
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Build Tools",
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.6",
     ],
     packages=find_packages(exclude=["contrib", "docs", "tests"]),
     python_requires=">=3.6",
