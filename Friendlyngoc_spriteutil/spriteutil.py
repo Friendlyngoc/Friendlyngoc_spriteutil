@@ -154,6 +154,11 @@ class SpriteSheet():
                         "This mode color is single integer")
                 self.__background_color = background_color
 
+
+        self.__sprites = self.find_sprites()[0]
+        self.__label_map = self.find_sprites()[1]
+
+
     @staticmethod
     def find_most_common_color(image):
         """
@@ -523,7 +528,7 @@ class SpriteSheet():
                 If there is a negative integer within the tuple
                 If there is an positive integer greater than 255
         """
-        sprites, label_map = self.find_sprites()
+        sprites, label_map = self.__sprites, self.__label_map
         # Validation for sprites and label_map arguments
         if not isinstance(background_color, tuple):
             raise TypeError(

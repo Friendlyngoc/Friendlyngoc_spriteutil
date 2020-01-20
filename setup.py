@@ -9,7 +9,7 @@ with open(path.join(here, "README.md"), encoding="utf-8") as f:
 
 __author__ = "Dang Duc Ngoc"
 __email__ = "ngoc.dang@f4.intek.edu.vn"
-__version__ = "1.1.1"
+__version__ = "1.0.2"
 __copyright__ = "Copyright (C) 2019, Intek Institute"
 __credits__ = "Daniel CAUNE"
 __license__ = "MIT"
@@ -58,7 +58,7 @@ setup(
             "zipp==1.0.0",
         ]
     },
-    name="Friendlyngoc",
+    name="Spriteutils_Ngoc_Dang",
     version=__version__,
     description=__description__,
     long_description=long_description,

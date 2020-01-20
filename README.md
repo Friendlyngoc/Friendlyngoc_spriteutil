@@ -38,7 +38,7 @@ The masks of these sprites are respectively:
 - `Python 3.6` is required. <br/>
 - `pip` is requied, to install `sudo apt install pip`
 ### Usage
-- `pip install Friendlyngoc` from your terminal
+- `pip install Spriteutils-Ngoc-Dang` from your terminal
 - Example of functioning:
 
     - Input as a spritesheet
@@ -59,5 +59,7 @@ The masks of these sprites are respectively:
     ```
 
 ## Contact Information
+- Name: `Dang Duc Ngoc`
+- Maintainer: `Dang Duc Ngoc`
 - Email: `Email: ngoc.dang@f4.intek.edu.vn` <br/>
 - Phone number: `Phone: (+84) 90 690 2056`
