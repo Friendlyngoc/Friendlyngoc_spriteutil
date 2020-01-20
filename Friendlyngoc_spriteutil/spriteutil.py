@@ -93,19 +93,20 @@ class Sprite:
 
 class SpriteSheet():
     def __init__(self, fd, background_color=None):
-        if fd.mode not in LIST_OF_SUPPORTED_MODE:
-            raise ValueError(
-                f"The image mode {fd.mode} is not supported")
-    
+
         if isinstance(fd, Image.Image):
             self.__fd = fd
-        
-        else:
+
+        elif not isinstance(fd, Image.Image):
             try:
                 self.__fd = Image.open(fd)
             except Exception:
                 raise ValueError(
                     "input must be a path, file or Image object")
+
+        if self.__fd.mode not in LIST_OF_SUPPORTED_MODE:
+            raise ValueError(
+                f"The image mode {self.__fd.mode} is not supported")
 
         if background_color is None:
             self.__background_color =\
@@ -114,7 +115,7 @@ class SpriteSheet():
         if background_color:
             fd_mode = self.__fd.mode
             len_background_color = len(background_color)
-            
+
             if fd_mode is RGB_MODE:
                 if not isinstance(background_color, tuple):
                     raise TypeError(
@@ -125,16 +126,16 @@ class SpriteSheet():
                 if not all([i in range(256) for i in background_color]):
                     raise ValueError(
                         "All integer must range from 0 to 255")
-                self.__background_color = background_color                
-            
+                self.__background_color = background_color
+
             elif fd_mode is RGBA_MODE:
                 if not isinstance(background_color, tuple):
                     raise TypeError(
-                        "The background color must be a tuple")                
+                        "The background color must be a tuple")
                 if len_background_color not in range(3,5):
                     raise ValueError(
                         "RGB tuple must only have 4 intergers")
-                if len_background_color == 3: 
+                if len_background_color == 3:
                     self.__background_color = (
                         background_color[0],
                         background_color[1],
@@ -142,16 +143,16 @@ class SpriteSheet():
                         255)
                 elif len_background_color == 4:
                     self.__background_color = background_color
- 
+
                 if not all([i in range(256) for i in self.__background_color]):
                     raise ValueError("All integer must range from 0 to 255")
-            
+
             elif fd_mode is L_MODE:
                 if not isinstance(background_color, int)\
                     and background_color not in range(257):
                     raise ValueError(
                         "This mode color is single integer")
-                self.__background_color = background_color  
+                self.__background_color = background_color
 
     @staticmethod
     def find_most_common_color(image):
@@ -610,6 +611,5 @@ class SpriteSheet():
 
 def main():
     pass
-
 if __name__ == "__main__":
     main()
