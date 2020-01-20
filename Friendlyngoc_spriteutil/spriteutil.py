@@ -155,8 +155,7 @@ class SpriteSheet():
                 self.__background_color = background_color
 
 
-        self.__sprites = self.find_sprites()[0]
-        self.__label_map = self.find_sprites()[1]
+        self.__sprites, self.__label_map = self.__find_sprites()
 
 
     @staticmethod
@@ -198,7 +197,7 @@ class SpriteSheet():
     def background_color(self):
         return self.__background_color
 
-    def find_sprites(self):
+    def __find_sprites(self):
         """
         Args:
             image (obj): An Image object
@@ -469,6 +468,8 @@ class SpriteSheet():
             key_dict_copy = copy.deepcopy(key_dict)
             count += 1
 
+    def find_sprites(self):
+        return self.__sprites,self.__label_map
 
     def __random_color_generator(self, len_background_color):
         """
@@ -615,6 +616,10 @@ class SpriteSheet():
 
 
 def main():
-    pass
+    spitesheet = SpriteSheet('metal_slug_sprite_sheet.png')
+    # sprites, label_map  = spitesheet.find_sprites()
+    print(spitesheet.create_sprite_labels_image())
+    # print(len(sprites))
+    # pass
 if __name__ == "__main__":
     main()
