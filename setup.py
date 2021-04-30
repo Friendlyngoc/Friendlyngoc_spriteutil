@@ -52,7 +52,7 @@ setup(
             "tomlkit==0.5.8",
             "typed-ast==1.4.1",
             "typing==3.7.4.1",
-            "urllib3==1.25.7",
+            "urllib3==1.25.8",
             "vistir==0.5.0",
             "wheel==0.33.6",
             "zipp==1.0.0",
